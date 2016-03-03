@@ -1,4 +1,4 @@
-package io.github.ingloriouscoderz;
+package io.github.ingloriouscoderz.computers;
 
 public abstract class AbstractComputer {
 	

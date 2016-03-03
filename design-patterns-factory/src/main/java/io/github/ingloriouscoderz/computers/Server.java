@@ -1,12 +1,12 @@
-package io.github.ingloriouscoderz;
+package io.github.ingloriouscoderz.computers;
 
-public class PC extends AbstractComputer {
+public class Server extends AbstractComputer {
 
 	private String ram;
 	private String hdd;
 	private String cpu;
 
-	public PC(String ram, String hdd, String cpu) {
+	Server(String ram, String hdd, String cpu) {
 		this.ram = ram;
 		this.hdd = hdd;
 		this.cpu = cpu;
