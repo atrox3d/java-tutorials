@@ -6,7 +6,7 @@ public class EagerInitializedSingleton {
 	private EagerInitializedSingleton() {}
 	
 	public static EagerInitializedSingleton getInstance() {
-		System.out.println("returning instance...");
+		System.out.println("returning EagerInitializedSingleton instance...");
 		return instance;
 	}
 }
