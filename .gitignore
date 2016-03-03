@@ -1,0 +1,13 @@
+corso java/
+software/
+.metadata/
+.recommenders/
+desktop.ini
+RemoteSystemsTempFiles/
+Servers/
+*/target/
+*/bin/
+*/.settings
+*/.classpath
+*/.project
+*/log4j-application.log
