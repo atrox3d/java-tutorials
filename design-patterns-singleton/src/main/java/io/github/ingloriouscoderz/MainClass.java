@@ -26,6 +26,12 @@ public class MainClass {
 		ThreadSafeSingleton tss1 = ThreadSafeSingleton.getInstance();
 		ThreadSafeSingleton tss2 = ThreadSafeSingleton.getInstance();
 		System.out.println("instance1==instance2:" + (tss1==tss2));
-	}
+
+		System.out.println("-----------------------------------------------------------------------");
+		System.out.println("testing InnerClassSingleton...");
+		InnerClassSingleton ics1 = InnerClassSingleton.getInstance();
+		InnerClassSingleton ics2 = InnerClassSingleton.getInstance();
+		System.out.println("instance1==instance2:" + (ics1==ics2));
+}
 
 }
