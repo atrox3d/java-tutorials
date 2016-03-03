@@ -5,13 +5,19 @@ public class Generics {
 	public static void main(String[] args) {
 		printVar(5);
 		printVar("cinque");
-		
+		//////////////////////////////////////////////////////////////////////////////////
 		int i = declareVar(int.class, 6);
 		printVar(i);
-
+		//////////////////////////////////////////////////////////////////////////////////
 		String s = declareVar(String.class, "sei");
 		printVar(s);
-}
+		//////////////////////////////////////////////////////////////////////////////////
+		GenericBox<Integer> gbi = new GenericBox<Integer>(7);
+		System.out.println(gbi);
+
+		GenericBox<String> gbs = new GenericBox<String>("sette");
+		System.out.println(gbs);
+	}
 
 	public static <E> void printVar(E var) {
 		System.out.println("printVar:" + var);
