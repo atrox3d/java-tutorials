@@ -10,20 +10,20 @@ public class PCFactory implements ComputerAbstractFactory {
 	private String hdd;
 	private String cpu;
 
-	public static AbstractComputer createComputer(
+	public PCFactory(
 				String type,
 				String ram,
 				String hdd,
 				String cpu
 			) 
 	{
-		switch(type.toUpperCase()) {
-		case "PC":
-			return new PC(ram, hdd, cpu);
-		case "SERVER":
-			return new Server(ram, hdd, cpu);
-		}
-		
-		return null;
+		this.ram = ram;
+		this.hdd = hdd;
+		this.cpu = cpu;
+	}
+
+	@Override
+	public AbstractComputer createComputer() {
+		return new PC(ram, hdd, cpu);	
 	}
 }

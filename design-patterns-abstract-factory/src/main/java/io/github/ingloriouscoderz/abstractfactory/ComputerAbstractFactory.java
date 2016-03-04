@@ -1,5 +1,7 @@
 package io.github.ingloriouscoderz.abstractfactory;
 
-public interface ComputerAbstractFactory {
+import io.github.ingloriouscoderz.model.AbstractComputer;
 
+public interface ComputerAbstractFactory {
+	public AbstractComputer createComputer();
 }
