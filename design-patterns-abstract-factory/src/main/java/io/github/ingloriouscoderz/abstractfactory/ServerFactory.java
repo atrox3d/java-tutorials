@@ -4,13 +4,13 @@ import io.github.ingloriouscoderz.model.AbstractComputer;
 import io.github.ingloriouscoderz.model.PC;
 import io.github.ingloriouscoderz.model.Server;
 
-public class PCFactory implements ComputerAbstractFactory {
+public class ServerFactory implements ComputerAbstractFactory {
 	private String type;
 	private String ram;
 	private String hdd;
 	private String cpu;
 
-	public PCFactory(
+	public ServerFactory(
 				String type,
 				String ram,
 				String hdd,
@@ -24,8 +24,8 @@ public class PCFactory implements ComputerAbstractFactory {
 
 	@Override
 	public AbstractComputer createComputer() {
-		AbstractComputer pc = new PC(ram, hdd, cpu);
-		System.out.println(this.getClass().getName() + ": constructing new PC: " + pc);
-		return pc;	
+		AbstractComputer server = new Server(ram, hdd, cpu);
+		System.out.println(this.getClass().getName() + ": constructing new SERVER: " + server);
+		return server;	
 	}
 }

@@ -10,6 +10,7 @@ public class PC extends AbstractComputer {
 		this.ram = ram;
 		this.hdd = hdd;
 		this.cpu = cpu;
+		System.out.println("PC: initializing new PC:" + this);
 	}
 
 	@Override
