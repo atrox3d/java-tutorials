@@ -9,7 +9,8 @@ public abstract class AbstractComputer {
 	@Override
 	public String toString() {
 		return String.format(
-					"RAM=%s, HDD=%s, CPU=%s",
+					"%s: RAM=%s, HDD=%s, CPU=%s",
+					this.getClass().getSimpleName(),
 					getRAM(),
 					getHDD(),
 					getCPU()

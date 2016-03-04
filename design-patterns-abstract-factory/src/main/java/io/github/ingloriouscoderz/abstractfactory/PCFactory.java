@@ -24,8 +24,19 @@ public class PCFactory implements ComputerAbstractFactory {
 
 	@Override
 	public AbstractComputer createComputer() {
+		System.out.println(this.getClass().getSimpleName() + ": constructing new PC: ");
 		AbstractComputer pc = new PC(ram, hdd, cpu);
-		System.out.println(this.getClass().getName() + ": constructing new PC: " + pc);
+		System.out.println(pc);
 		return pc;	
+	}
+	
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + ":" + String.format(
+				"RAM=%s, HDD=%s, CPU=%s",
+				ram,
+				hdd,
+				cpu
+			);
 	}
 }

@@ -10,7 +10,7 @@ public class Server extends AbstractComputer {
 		this.ram = ram;
 		this.hdd = hdd;
 		this.cpu = cpu;
-		System.out.println("Server: initializing new Server:" + this);
+		System.out.println(this.getClass().getSimpleName() + ": initializing new " + this.getClass().getSimpleName() + ":" + this);
 	}
 
 	@Override

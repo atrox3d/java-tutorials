@@ -24,8 +24,19 @@ public class ServerFactory implements ComputerAbstractFactory {
 
 	@Override
 	public AbstractComputer createComputer() {
+		System.out.println(this.getClass().getSimpleName() + ": constructing new SERVER: ");
 		AbstractComputer server = new Server(ram, hdd, cpu);
-		System.out.println(this.getClass().getName() + ": constructing new SERVER: " + server);
+		System.out.println(server);
 		return server;	
+	}
+
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + ":" + String.format(
+				"RAM=%s, HDD=%s, CPU=%s",
+				ram,
+				hdd,
+				cpu
+			);
 	}
 }
