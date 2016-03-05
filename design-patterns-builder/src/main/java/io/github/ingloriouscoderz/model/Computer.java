@@ -16,12 +16,14 @@ public class Computer {
 			System.out.println(this.getClass().getSimpleName() + ": initializing new " + this.getClass().getSimpleName() + ":" + this);
 		}
 
-		public void setGraphicsCardEnabled(boolean isGraphicsCardEnabled) {
+		public ComputerBuilder setGraphicsCardEnabled(boolean isGraphicsCardEnabled) {
 			this.isGraphicsCardEnabled = isGraphicsCardEnabled;
+			return this;
 		}
 
-		public void setBluetoothEnabled(boolean isBluetoothEnabled) {
+		public ComputerBuilder setBluetoothEnabled(boolean isBluetoothEnabled) {
 			this.isBluetoothEnabled = isBluetoothEnabled;
+			return this;
 		}
 		
 		public Computer build() {
