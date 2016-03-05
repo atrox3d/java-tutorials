@@ -1,11 +1,19 @@
 package model;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Employees implements Cloneable, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<Employee> empList;
 
 	public Employees(List<Employee> emplist) {
@@ -30,9 +38,17 @@ public class Employees implements Cloneable, Serializable {
 	@Override
 	public  Employees clone() throws CloneNotSupportedException {
 		try {
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			ObjectOutputStream out = new ObjectOutputStream(bos);
+			out.writeObject(this);
+			out.flush();
 			
+			ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+			ObjectInputStream in = new ObjectInputStream(bis);
+			return (Employees) in.readObject();
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("exception cloning, message :" +  e);
 		}
+		return null;
 	}
 }

@@ -10,6 +10,7 @@ public class MainClass {
 		emps.loadData();
 		
 		Employees copy = emps.clone();
+		System.out.println(copy != null);
 		copy.getEmpList().add(new Employee().setId(4).setName("test"));
 	
 		System.out.println(emps.getEmpList());
