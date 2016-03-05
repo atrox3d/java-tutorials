@@ -1,36 +1,6 @@
 package io.github.ingloriouscoderz.model;
 
 public class Computer {
-	public static class ComputerBuilder {
-		private String ram;
-		private String hdd;
-		private String cpu;
-	    //optional parameters
-		private boolean isGraphicsCardEnabled;
-		private boolean isBluetoothEnabled;
-
-		public ComputerBuilder(String ram, String hdd, String cpu) {
-			this.ram = ram;
-			this.hdd = hdd;
-			this.cpu = cpu;
-			System.out.println(this.getClass().getSimpleName() + ": initializing new " + this.getClass().getSimpleName() + ":" + this);
-		}
-
-		public ComputerBuilder setGraphicsCardEnabled(boolean isGraphicsCardEnabled) {
-			this.isGraphicsCardEnabled = isGraphicsCardEnabled;
-			return this;
-		}
-
-		public ComputerBuilder setBluetoothEnabled(boolean isBluetoothEnabled) {
-			this.isBluetoothEnabled = isBluetoothEnabled;
-			return this;
-		}
-		
-		public Computer build() {
-			return new Computer(this);
-		}
-
-	}
 
 	private String ram;
 	private String hdd;
@@ -38,14 +8,20 @@ public class Computer {
     //optional parameters
 	private boolean isGraphicsCardEnabled;
 	private boolean isBluetoothEnabled;
+	
+	private static ComputerBuilder builder = null;
 
 	private Computer(ComputerBuilder builder) {
-		this.ram = builder.ram;
-		this.hdd = builder.hdd;
-		this.cpu = builder.cpu;
+		this.ram = builder.getRam();
+		this.hdd = builder.getHdd();
+		this.cpu = builder.getCpu();
 		System.out.println(this.getClass().getSimpleName() + ": initializing new " + this.getClass().getSimpleName() + ":" + this);
 	}
 
+	public static Computer build(ComputerBuilder builder) {
+		Computer.builder = builder;
+		return new Computer(Computer.builder);
+	}
 	public String getRAM() {
 		return ram;
 	}
