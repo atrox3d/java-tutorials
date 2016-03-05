@@ -28,4 +28,8 @@ public class Server extends AbstractComputer {
 		return cpu;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString();
+	}
 }

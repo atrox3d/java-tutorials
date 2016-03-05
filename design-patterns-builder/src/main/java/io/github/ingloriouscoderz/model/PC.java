@@ -28,4 +28,9 @@ public class PC extends AbstractComputer {
 		return cpu;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+	
 }
