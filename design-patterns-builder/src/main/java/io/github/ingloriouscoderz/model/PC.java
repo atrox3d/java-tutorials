@@ -1,10 +1,12 @@
 package io.github.ingloriouscoderz.model;
 
-public class PC extends AbstractComputer {
-
+public class PC {
 	private String ram;
 	private String hdd;
 	private String cpu;
+    //optional parameters
+	private boolean isGraphicsCardEnabled;
+	private boolean isBluetoothEnabled;
 
 	public PC(String ram, String hdd, String cpu) {
 		this.ram = ram;
@@ -13,24 +15,37 @@ public class PC extends AbstractComputer {
 		System.out.println(this.getClass().getSimpleName() + ": initializing new " + this.getClass().getSimpleName() + ":" + this);
 	}
 
-	@Override
 	public String getRAM() {
 		return ram;
 	}
 
-	@Override
 	public String getHDD() {
 		return hdd;
 	}
 
-	@Override
 	public String getCPU() {
 		return cpu;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString();
+		return String.format(
+					"%s: RAM=%s, HDD=%s, CPU=%s",
+					this.getClass().getSimpleName(),
+					getRAM(),
+					getHDD(),
+					getCPU()
+				);
+	}
+
+	public boolean isGraphicsCardEnabled() {
+		// TODO Auto-generated method stub
+		return isGraphicsCardEnabled;
+	}
+
+	public boolean isBluetoothEnabled() {
+		// TODO Auto-generated method stub
+		return isBluetoothEnabled;
 	}
 	
 }
