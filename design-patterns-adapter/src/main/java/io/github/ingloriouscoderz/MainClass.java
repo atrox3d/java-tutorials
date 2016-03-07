@@ -8,9 +8,11 @@ import io.github.ingloriouscoderz.design.adapter.Volt;
 public class MainClass {
 
 	public static void main(String[] args) {
+		testClassAdapter();
+		testObjectAdapter();
 	}
 	
-	public void testClassAdapter() {
+	public static void testClassAdapter() {
 		SocketAdapter sockAdapter = new SocketClassAdapter();
 		Volt v3 = sockAdapter.get3Volt();
 		Volt v12 = sockAdapter.get12Volt();
@@ -21,7 +23,7 @@ public class MainClass {
 		System.out.println("v120 using class adapter=" + v120.getVolts());
 	}
 
-	public void testObjectAdapter() {
+	public static void  testObjectAdapter() {
 		SocketAdapter sockAdapter = new SocketObjectAdapter();
 		Volt v3 = sockAdapter.get3Volt();
 		Volt v12 = sockAdapter.get12Volt();
