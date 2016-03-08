@@ -1,8 +1,8 @@
 package io.github.ingloriouscoderz;
 
-import io.github.ingloriouscoderz.bridge.Red;
-import io.github.ingloriouscoderz.bridge.Shape;
-import io.github.ingloriouscoderz.bridge.Triangle;
+import io.github.ingloriouscoderz.bridge.color.Red;
+import io.github.ingloriouscoderz.bridge.color.Shape;
+import io.github.ingloriouscoderz.bridge.color.Triangle;
 
 public class MainClass {
  

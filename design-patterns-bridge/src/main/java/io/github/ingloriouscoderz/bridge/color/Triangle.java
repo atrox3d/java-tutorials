@@ -1,8 +1,8 @@
-package io.github.ingloriouscoderz.bridge;
+package io.github.ingloriouscoderz.bridge.color;
 
-public class Pentagon extends Shape {
+public class Triangle extends Shape {
 
-	public Pentagon(Color color) {
+	public Triangle(Color color) {
 		super(color);
 		// TODO Auto-generated constructor stub
 	}

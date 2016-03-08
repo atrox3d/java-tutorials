@@ -1,4 +1,4 @@
-package io.github.ingloriouscoderz.bridge;
+package io.github.ingloriouscoderz.bridge.color;
 
 public abstract class Shape {
 	protected Color color;
