@@ -1,4 +1,4 @@
-package io.github.ingloriouscoderz.network;
+package io.github.ingloriouscoderz.network.client;
 
 import java.io.IOException;
 import java.net.InetAddress;

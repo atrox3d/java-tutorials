@@ -1,8 +1,8 @@
 package io.github.ingloriouscoderz;
 
-import io.github.ingloriouscoderz.network.PseudoPingEcho;
-import io.github.ingloriouscoderz.network.ReachableTest;
-import io.github.ingloriouscoderz.network.SocketClient;
+import io.github.ingloriouscoderz.network.client.PseudoPingEcho;
+import io.github.ingloriouscoderz.network.client.ReachableTest;
+import io.github.ingloriouscoderz.network.client.SocketClient;
 
 public class MainClass {
 
