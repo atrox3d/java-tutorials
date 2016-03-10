@@ -8,14 +8,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class SocketServer {
-	private ServerSocket server;
-	private Socket conn;
-	private PrintStream out;
-	private BufferedReader in;
-	private String message;
+	protected ServerSocket server;
+	protected Socket conn;
+	protected PrintStream out;
+	protected BufferedReader in;
+	protected String message;
 	
-	private int port;
-	private int backlog;
+	protected int port;
+	protected int backlog;
 
 	public SocketServer(int port, int backlog) {
 		this.port = port;
@@ -39,19 +39,19 @@ public class SocketServer {
 			
 			out.printf("Welcome to %s %s%n", this.getClass().getName(), "1.0");
 			
-//			echo("waiting for input...");
-//			String message = in.readLine();
-//			echo("received input:" + message);
-//			echo("sending back message: " + message);
-//			out.print(message);
-//			out.flush();
-//			echo("message sent.");
-			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+	}
+	
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		close();
+	}
+
+	protected void close() {
 		try {
 			echo("closing connections");
 			in.close();
@@ -61,9 +61,9 @@ public class SocketServer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
-	
-	private void echo(String msg) {
+	protected void echo(String msg) {
 		System.out.println(msg);
 	}
 }
