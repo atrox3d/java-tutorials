@@ -29,16 +29,28 @@ public class SocketServer {
 			echo("server socket created, waiting for connection...");
 			conn = server.accept();
 			echo(String.format(
-						"Connection received from %s%n", 
-						conn.getInetAddress().getHostName()
-					));
+					"Connection received from %s", 
+					conn.getInetAddress().getHostName()
+				));
 			
+			handleClient(conn);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	protected void handleClient(Socket conn)  {
+		try {
 			echo("creating I/O channels...");
 			out = new PrintStream(conn.getOutputStream());
 			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			
 			out.printf("Welcome to %s %s%n", this.getClass().getName(), "1.0");
-			
+			echo("closing connections");
+			in.close();
+			out.close();
+			conn.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,9 +65,7 @@ public class SocketServer {
 
 	protected void close() {
 		try {
-			echo("closing connections");
-			in.close();
-			out.close();
+			echo("closing server");
 			server.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
