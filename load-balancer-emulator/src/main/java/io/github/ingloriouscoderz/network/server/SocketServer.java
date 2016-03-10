@@ -64,6 +64,6 @@ public class SocketServer {
 		
 	}
 	protected void echo(String msg) {
-		System.out.println(msg);
+		System.out.printf("[%s] - %s%n", this.getClass().getName(),  msg);
 	}
 }
