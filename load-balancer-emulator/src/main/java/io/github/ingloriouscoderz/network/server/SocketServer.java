@@ -37,10 +37,15 @@ public class SocketServer {
 			out = new PrintStream(conn.getOutputStream());
 			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			
-			String message = in.readLine();
-			out.print(message);
-			out.flush();
+			out.printf("Welcome to %s %s%n", this.getClass().getName(), "1.0");
 			
+//			echo("waiting for input...");
+//			String message = in.readLine();
+//			echo("received input:" + message);
+//			echo("sending back message: " + message);
+//			out.print(message);
+//			out.flush();
+//			echo("message sent.");
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -48,6 +53,7 @@ public class SocketServer {
 		}
 		
 		try {
+			echo("closing connections");
 			in.close();
 			out.close();
 			server.close();
