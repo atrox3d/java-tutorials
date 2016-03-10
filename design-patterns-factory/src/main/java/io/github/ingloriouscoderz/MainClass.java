@@ -2,7 +2,6 @@ package io.github.ingloriouscoderz;
 
 import io.github.ingloriouscoderz.computers.AbstractComputer;
 import io.github.ingloriouscoderz.computers.ComputerFactory;
-import io.github.ingloriouscoderz.computers.PC;
 
 public class MainClass {
 

@@ -4,7 +4,6 @@ import io.github.ingloriouscoderz.abstractfactory.ComputerFactory;
 import io.github.ingloriouscoderz.abstractfactory.PCFactory;
 import io.github.ingloriouscoderz.abstractfactory.ServerFactory;
 import io.github.ingloriouscoderz.model.AbstractComputer;
-import io.github.ingloriouscoderz.model.PC;
 
 public class MainClass {
 

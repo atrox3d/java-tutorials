@@ -1,7 +1,6 @@
 package io.github.ingloriouscoderz.abstractfactory;
 
 import io.github.ingloriouscoderz.model.AbstractComputer;
-import io.github.ingloriouscoderz.model.PC;
 import io.github.ingloriouscoderz.model.Server;
 
 public class ServerFactory implements ComputerAbstractFactory {
