@@ -46,6 +46,15 @@ public class SocketServer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			in.close();
+			out.close();
+			server.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private void echo(String msg) {
