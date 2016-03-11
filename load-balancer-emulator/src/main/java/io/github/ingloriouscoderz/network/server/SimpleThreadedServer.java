@@ -2,7 +2,7 @@ package io.github.ingloriouscoderz.network.server;
 
 import java.net.Socket;
 
-import io.github.ingloriouscoderz.network.server.handlers.ClientEchoHandler;
+import io.github.ingloriouscoderz.network.server.handlers.threaded.ThreadedClientEchoHandler;
 
 public class SimpleThreadedServer extends SimpleSocketServer {
 
@@ -21,7 +21,8 @@ public class SimpleThreadedServer extends SimpleSocketServer {
 
 	@Override
 	protected void handleClient(Socket conn) {
-	    new ClientEchoHandler(conn).start();
+		Thread t = new Thread( new ThreadedClientEchoHandler(conn));
+		t.start();
 	}
 	
 }

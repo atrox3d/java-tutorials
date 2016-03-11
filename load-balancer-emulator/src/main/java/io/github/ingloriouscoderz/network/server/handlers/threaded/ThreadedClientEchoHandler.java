@@ -1,35 +1,39 @@
-package io.github.ingloriouscoderz.network.server.handlers;
+package io.github.ingloriouscoderz.network.server.handlers.threaded;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 
-public class ClientHandler extends AbstractClientHandler
+import io.github.ingloriouscoderz.network.server.handlers.AbstractClientHandler;
+
+public class ThreadedClientEchoHandler extends AbstractClientHandler implements Runnable 
 {
-    public ClientHandler(Socket conn) 
+     
+    public ThreadedClientEchoHandler(Socket conn) 
     {
     	super(conn);
     }
  
     public void run() 
     {
-        String line;
+        String line , input = "";
          
         try
         {
             //get socket writing and reading streams
+        	echo("Opening I/O streams");
             DataInputStream in = new DataInputStream(conn.getInputStream());
             PrintStream out = new PrintStream(conn.getOutputStream());
  
-            //Send welcome message to client
-            out.println("Welcome to the Server");
- 
-        	line = in.readLine();
+        	echo("reading input from client");
+            line = in.readLine();
 			//reply with the same message, adding some text
-            out.println("I got : " + line);
+            echo("replying : " + line);
+            out.println(line);
              
             //client disconnected, so close socket
+            echo("closing connection");
             conn.close();
         } 
        

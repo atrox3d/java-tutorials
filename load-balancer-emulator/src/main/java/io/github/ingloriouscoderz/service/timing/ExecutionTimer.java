@@ -1,4 +1,6 @@
-package io.github.ingloriouscoderz.timing;
+package io.github.ingloriouscoderz.service.timing;
+
+import io.github.ingloriouscoderz.service.Util;
 
 public class ExecutionTimer {
 	private long start;
@@ -11,12 +13,12 @@ public class ExecutionTimer {
 	
 	public void start() {
 		start = System.currentTimeMillis();
-		System.out.printf("start:%d%n", start);
+		echo(String.format("start:%d%n", start));
 	}
 	
 	public void stop() {
 		end = System.currentTimeMillis();
-		System.out.printf("stop:%d%n", end);
+		echo(String.format("stop:%d%n", end));
 	}
 	
 	public long duration() {
@@ -30,5 +32,9 @@ public class ExecutionTimer {
 	@Override
 	public String toString() {
 		return String.format("%d ms", duration());
+	}
+
+	private void echo(String msg) {
+		Util.echo(this, msg);
 	}
 }

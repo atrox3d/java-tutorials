@@ -1,13 +1,15 @@
-package io.github.ingloriouscoderz.network.server.handlers;
+package io.github.ingloriouscoderz.network.server.handlers.threaded;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 
-public class ClientHandler extends AbstractClientHandler
+import io.github.ingloriouscoderz.network.server.handlers.AbstractClientHandler;
+
+public class ThreadedClientHandler extends AbstractClientHandler implements Runnable 
 {
-    public ClientHandler(Socket conn) 
+    public ThreadedClientHandler(Socket conn) 
     {
     	super(conn);
     }

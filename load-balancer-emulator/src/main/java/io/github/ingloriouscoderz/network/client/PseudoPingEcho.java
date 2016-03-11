@@ -6,7 +6,8 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import io.github.ingloriouscoderz.timing.ExecutionTimer;
+import io.github.ingloriouscoderz.service.Util;
+import io.github.ingloriouscoderz.service.timing.ExecutionTimer;
 
 public class PseudoPingEcho {
 	private String address;
@@ -31,25 +32,25 @@ public class PseudoPingEcho {
 			
 			String message = String.valueOf(delay);
 			
-			System.out.printf("opening socket : %s:%d...%n", address, port);
+			echo(String.format("opening socket : %s:%d...%n", address, port));
 			echo = new Socket(address, port);
-			System.out.printf("opening input stream on socket : %s:%d...%n", address, port);
+			echo(String.format("opening input stream on socket : %s:%d...%n", address, port));
 			DataInputStream dis = new DataInputStream(echo.getInputStream());
-			System.out.printf("opening output stream on socket : %s:%d...%n", address, port);
+			echo(String.format("opening output stream on socket : %s:%d...%n", address, port));
 			PrintStream ps = new PrintStream(echo.getOutputStream());
 			
-			System.out.printf("sending delayedMessage '%s' on socket : %s:%d...%n", delay, address, port);
 			timer.reset();
 			timer.start();
+			echo(String.format("sending delayedMessage '%s' on socket : %s:%d...%n", delay, address, port));
 			ps.println(message);
 			@SuppressWarnings("deprecation")
 			String answer = dis.readLine();
 			timer.stop();
 			if(answer.equals(message)) {
-				System.out.println(String.format("address %s is alive, server answered in %s", address, timer));
+				echo(String.format("address %s is alive, server answered in %s", address, timer));
 				return true;
 			} else {
-				System.out.println(String.format("address %s is dead or not responding to echo", address));
+				echo(String.format("address %s is dead or not responding to echo", address));
 				return false;
 			}
 			
@@ -62,5 +63,9 @@ public class PseudoPingEcho {
 		}
 		
 		return false;
+	}
+	
+	private void echo(String msg) {
+		Util.echo(this, msg);
 	}
 }

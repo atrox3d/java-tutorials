@@ -3,7 +3,9 @@ package io.github.ingloriouscoderz.network.server;
 import java.io.*;
 import java.net.*;
 
-import io.github.ingloriouscoderz.network.server.handlers.ClientHandler;
+import io.github.ingloriouscoderz.network.server.handlers.threaded.ThreadedClientEchoHandler;
+import io.github.ingloriouscoderz.network.server.handlers.threaded.ThreadedClientHandler;
+import io.github.ingloriouscoderz.service.Util;
  
 public class SimpleSocketServer
 {
@@ -32,6 +34,7 @@ public class SimpleSocketServer
     	protected Socket acceptConnection() {
             //get the connection socket
             try {
+            	echo("waiting for connection...");
 				conn = s.accept();
 	            return conn;
 			} catch (IOException e) {
@@ -43,33 +46,43 @@ public class SimpleSocketServer
     	
     	protected void handleClient(Socket conn) {
 		    //create new thread to handle client
-		    new ClientHandler(conn).start();
+    		echo("creating new ThreadedClientEchoHandler");
+    		Thread t = new Thread( new ThreadedClientEchoHandler(conn));
+    		t.start();
     		
     	}
     	
         public void serve() {
 	        //2. Wait for an incoming connection
 			s = createServer();
+			
 			echo("Server socket created.Waiting for connection...");
-			 
 			conn = acceptConnection();
-		    echo("Connection received from " + conn.getInetAddress().getHostName() + " : " + conn.getPort());
+
+			echo("Connection received from " + conn.getInetAddress().getHostName() + " : " + conn.getPort());
 		    handleClient(conn);
 	         
-	        //5. close the connections and stream
-	        try
-	        {
-	            s.close();
-	        }
-	        catch(IOException ioException)
-	        {
-	            System.err.println("Unable to close. IOexception");
-	        }
     }
 
-    public void echo(String msg)
+    @Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+        //5. close the connections and stream
+        try
+        {
+            s.close();
+        }
+        catch(IOException ioException)
+        {
+            System.err.println("Unable to close. IOexception");
+        }
+	}
+
+	public void echo(String msg)
     {
-		System.out.printf("[%s] - %s%n", this.getClass().getName(),  msg);
+		//System.out.printf("[%s] - %s%n", this.getClass().getName(),  msg);
+		Util.echo(this, msg);
     }
 }
  
