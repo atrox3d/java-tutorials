@@ -1,9 +1,7 @@
 package io.github.ingloriouscoderz;
 
 import io.github.ingloriouscoderz.network.client.PseudoPingEcho;
-import io.github.ingloriouscoderz.network.client.SocketClient;
 import io.github.ingloriouscoderz.network.server.ComplexThreadedServer;
-import io.github.ingloriouscoderz.network.server.SimpleThreadedServer;
 
 public class MainClass {
 
