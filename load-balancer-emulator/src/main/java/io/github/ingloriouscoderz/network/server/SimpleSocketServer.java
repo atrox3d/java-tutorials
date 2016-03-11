@@ -3,6 +3,7 @@ package io.github.ingloriouscoderz.network.server;
 import java.io.*;
 import java.net.*;
 
+import io.github.ingloriouscoderz.network.server.handlers.ClientEchoHandler;
 import io.github.ingloriouscoderz.network.server.handlers.threaded.ThreadedClientEchoHandler;
 import io.github.ingloriouscoderz.network.server.handlers.threaded.ThreadedClientHandler;
 import io.github.ingloriouscoderz.service.Util;
@@ -46,10 +47,8 @@ public class SimpleSocketServer
     	
     	protected void handleClient(Socket conn) {
 		    //create new thread to handle client
-    		echo("creating new ThreadedClientEchoHandler");
-    		Thread t = new Thread( new ThreadedClientEchoHandler(conn));
-    		t.start();
-    		
+    		echo("creating new ClientEchoHandler");
+    		new ClientEchoHandler(conn).run();
     	}
     	
         public void serve() {

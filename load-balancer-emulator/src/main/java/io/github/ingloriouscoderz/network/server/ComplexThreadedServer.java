@@ -23,10 +23,12 @@ public class ComplexThreadedServer extends SimpleSocketServer implements Runnabl
 		}
 	}
 
-	@Override
 	protected void handleClient(Socket conn) {
-		echo("creating client handler");
-	    new ClientEchoHandler(conn).run();
+	    //create new thread to handle client
+		echo("creating new ThreadedClientEchoHandler");
+		Thread t = new Thread( new ThreadedClientEchoHandler(conn));
+		t.start();
+		
 	}
 
 	@Override

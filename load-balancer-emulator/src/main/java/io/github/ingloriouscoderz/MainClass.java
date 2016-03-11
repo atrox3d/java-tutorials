@@ -8,10 +8,11 @@ import io.github.ingloriouscoderz.network.server.SimpleThreadedServer;
 public class MainClass {
 
 	public static void main(String[] args) {
-		Thread t1 = new Thread(new ComplexThreadedServer(7, 10));
+		Thread t1 = new Thread(new ComplexThreadedServer(7, 10), "server");
 		t1.start();
 		
-		Thread t2 = new Thread(
+		for (int i = 0; i < 5; i++) {
+			Thread tx = new Thread(
 					new Runnable() {
 						
 						@Override
@@ -20,19 +21,13 @@ public class MainClass {
 							ppe.ping(5000);
 							
 						}
-					}
+					},
+					String.valueOf(i)
 				);
 		
-		t2.start();
+			tx.start();
+		}
 		
 		try{Thread.sleep(5000);}catch(Exception x){}
-//		ReachableTest rt = new ReachableTest("127.0.0.1");
-//		rt.ping(3000);
-		
-//		SocketClient sc = new SocketClient("127.0.0.1", 7);
-//		sc.ping(3000);
-		
-		
-//		new SimpleThreadedServer(7, 10).serve();
 	}
 }
