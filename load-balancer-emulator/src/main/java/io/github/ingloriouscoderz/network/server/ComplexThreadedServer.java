@@ -2,7 +2,6 @@ package io.github.ingloriouscoderz.network.server;
 
 import java.net.Socket;
 
-import io.github.ingloriouscoderz.network.server.handlers.ClientEchoHandler;
 import io.github.ingloriouscoderz.network.server.handlers.threaded.ThreadedClientEchoHandler;
 
 public class ComplexThreadedServer extends SimpleSocketServer implements Runnable{
@@ -27,6 +26,7 @@ public class ComplexThreadedServer extends SimpleSocketServer implements Runnabl
 	    //create new thread to handle client
 		echo("creating new ThreadedClientEchoHandler");
 		Thread t = new Thread( new ThreadedClientEchoHandler(conn));
+		t.setName(String.valueOf(t.getId()));
 		t.start();
 		
 	}

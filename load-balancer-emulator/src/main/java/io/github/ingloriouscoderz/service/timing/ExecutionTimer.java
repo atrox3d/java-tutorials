@@ -5,20 +5,30 @@ import io.github.ingloriouscoderz.service.Util;
 public class ExecutionTimer {
 	private long start;
 	private long end;
+	private Object caller;
 	
 	
 	public ExecutionTimer() {
 		reset();
 	}
 	
+	public ExecutionTimer(Object thiz) {
+		this();
+		setCaller(thiz);
+	}
+	
+	public void setCaller(Object thiz) {
+		caller = thiz;
+	}
+
 	public void start() {
 		start = System.currentTimeMillis();
-		echo(String.format("start:%d%n", start));
+		echo(String.format("start:%d", start));
 	}
 	
 	public void stop() {
 		end = System.currentTimeMillis();
-		echo(String.format("stop:%d%n", end));
+		echo(String.format("stop:%d", end));
 	}
 	
 	public long duration() {
@@ -35,6 +45,6 @@ public class ExecutionTimer {
 	}
 
 	private void echo(String msg) {
-		Util.echo(this, msg);
+		Util.echo(caller, this, msg);
 	}
 }

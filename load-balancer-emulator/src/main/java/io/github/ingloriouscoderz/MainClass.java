@@ -19,11 +19,10 @@ public class MainClass {
 							ppe.ping(5000);
 							
 						}
-					},
-					String.valueOf(i)
+					}
 				);
-		
 			tx.start();
+			tx.setName(String.valueOf(tx.getId()));
 		}
 		
 		try{Thread.sleep(5000);}catch(Exception x){}

@@ -24,7 +24,7 @@ public class PseudoPingEcho {
 			this.port = port;
 		}
 		
-		timer = new ExecutionTimer();
+		timer = new ExecutionTimer(this);
 	}
 	
 	public boolean ping(int delay) {
@@ -32,16 +32,16 @@ public class PseudoPingEcho {
 			
 			String message = String.valueOf(delay);
 			
-			echo(String.format("opening socket : %s:%d...%n", address, port));
+			echo(String.format("opening socket : %s:%d...", address, port));
 			echo = new Socket(address, port);
-			echo(String.format("opening input stream on socket : %s:%d...%n", address, port));
+			echo(String.format("opening input stream on socket : %s:%d...", address, port));
 			DataInputStream dis = new DataInputStream(echo.getInputStream());
-			echo(String.format("opening output stream on socket : %s:%d...%n", address, port));
+			echo(String.format("opening output stream on socket : %s:%d...", address, port));
 			PrintStream ps = new PrintStream(echo.getOutputStream());
 			
 			timer.reset();
 			timer.start();
-			echo(String.format("sending delayedMessage '%s' on socket : %s:%d...%n", delay, address, port));
+			echo(String.format("sending delayedMessage '%s' on socket : %s:%d...", delay, address, port));
 			ps.println(message);
 			@SuppressWarnings("deprecation")
 			String answer = dis.readLine();
