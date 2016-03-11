@@ -41,7 +41,7 @@ public class PseudoPingEcho {
 			System.out.printf("sending delayedMessage '%s' on socket : %s:%d...%n", delay, address, port);
 			timer.reset();
 			timer.start();
-			ps.print(message);
+			ps.println(message);
 			@SuppressWarnings("deprecation")
 			String answer = dis.readLine();
 			timer.stop();
