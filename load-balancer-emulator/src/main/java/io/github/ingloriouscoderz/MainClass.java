@@ -12,12 +12,10 @@ public class MainClass {
 		for (int i = 0; i < 5; i++) {
 			Thread tx = new Thread(
 					new Runnable() {
-						
 						@Override
 						public void run() {
 							PseudoPingEcho ppe = new PseudoPingEcho("127.0.0.1", 7);
 							ppe.ping(5000);
-							
 						}
 					}
 				);
