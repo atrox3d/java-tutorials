@@ -1,6 +1,6 @@
-package io.github.ingloriouscoderz.abstractfactory;
+package io.github.ingloriouscoderz.abstractfactory.computer;
 
-import io.github.ingloriouscoderz.model.AbstractComputer;
+import io.github.ingloriouscoderz.model.computer.AbstractComputer;
 
 public class ComputerFactory {
 

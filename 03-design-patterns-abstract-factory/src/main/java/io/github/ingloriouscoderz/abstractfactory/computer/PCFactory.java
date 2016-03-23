@@ -1,7 +1,7 @@
-package io.github.ingloriouscoderz.abstractfactory;
+package io.github.ingloriouscoderz.abstractfactory.computer;
 
-import io.github.ingloriouscoderz.model.AbstractComputer;
-import io.github.ingloriouscoderz.model.PC;
+import io.github.ingloriouscoderz.model.computer.AbstractComputer;
+import io.github.ingloriouscoderz.model.computer.PC;
 
 public class PCFactory implements ComputerAbstractFactory {
 	private String type;

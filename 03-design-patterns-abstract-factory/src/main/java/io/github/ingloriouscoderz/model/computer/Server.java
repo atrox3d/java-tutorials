@@ -1,4 +1,4 @@
-package io.github.ingloriouscoderz.model;
+package io.github.ingloriouscoderz.model.computer;
 
 public class Server extends AbstractComputer {
 

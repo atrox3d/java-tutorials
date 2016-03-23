@@ -1,4 +1,4 @@
-package io.github.ingloriouscoderz;
+package io.github.ingloriouscoderz.singleton;
 
 public class EagerInitializedSingleton {
 	private static final EagerInitializedSingleton instance = new EagerInitializedSingleton();

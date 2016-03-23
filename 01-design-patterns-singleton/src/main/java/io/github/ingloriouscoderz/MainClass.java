@@ -1,5 +1,11 @@
 package io.github.ingloriouscoderz;
 
+import io.github.ingloriouscoderz.singleton.EagerInitializedSingleton;
+import io.github.ingloriouscoderz.singleton.InnerClassSingleton;
+import io.github.ingloriouscoderz.singleton.LazyInitializedSingleton;
+import io.github.ingloriouscoderz.singleton.StaticBlockSingleton;
+import io.github.ingloriouscoderz.singleton.ThreadSafeSingleton;
+
 public class MainClass {
 
 	public static void main(String[] args) {
@@ -36,7 +42,7 @@ public class MainClass {
 		System.out.println("instance1==instance2:" + (tss1==tss2));
 
 		System.out.println("-----------------------------------------------------------------------");
-		System.out.println("testing InnerClassSingleton...");
+		System.out.println("testing InnerClassSingleton (Bill Pugh Singleton Implementation)...");
 		InnerClassSingleton ics1 = InnerClassSingleton.getInstance();
 		InnerClassSingleton ics2 = InnerClassSingleton.getInstance();
 		System.out.println("instance1 hashCode=" + ics1.hashCode());

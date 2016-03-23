@@ -1,5 +1,6 @@
-package io.github.ingloriouscoderz;
+package io.github.ingloriouscoderz.singleton;
 
+// Bill Pugh Singleton Implementation
 public class InnerClassSingleton {
 	private InnerClassSingleton() {}
 	

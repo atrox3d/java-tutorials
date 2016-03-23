@@ -1,4 +1,4 @@
-package io.github.ingloriouscoderz;
+package io.github.ingloriouscoderz.singleton;
 
 public class LazyInitializedSingleton {
 	private static LazyInitializedSingleton instance;
