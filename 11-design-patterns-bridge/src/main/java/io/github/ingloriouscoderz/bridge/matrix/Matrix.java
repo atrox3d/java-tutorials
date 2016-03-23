@@ -16,6 +16,7 @@ public abstract class Matrix {
 	protected MatrixCell createPosition(int row, int col) throws MatrixOutOfBoundsException {
 		MatrixCell mc = getPosition(row, col);
 		if(mc == null) {
+			System.out.printf("cell %d:%d is null, creating...%n", row, col);
 			mc = new MatrixCell(col, row);
 		}
 		data.add(mc);

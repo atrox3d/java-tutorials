@@ -4,7 +4,7 @@ import java.util.Collection;
 
 public class SparseMatrix extends Matrix {
 
-	protected SparseMatrix(int rows, int cols, Collection<MatrixCell> data) throws MatrixOutOfBoundsException {
+	public SparseMatrix(int rows, int cols, Collection<MatrixCell> data) throws MatrixOutOfBoundsException {
 		super(rows, cols, data);
 	}
 
