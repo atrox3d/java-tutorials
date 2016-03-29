@@ -1,6 +1,6 @@
-package io.github.ingloriouscoderz.model.decorator;
+package io.github.ingloriouscoderz.model.car.decorator;
 
-import io.github.ingloriouscoderz.model.base.Car;
+import io.github.ingloriouscoderz.model.car.base.Car;
 
 public class SportsCar extends CarDecorator {
 

@@ -1,4 +1,4 @@
-package io.github.ingloriouscoderz.model.base;
+package io.github.ingloriouscoderz.model.car.base;
 
 public class BasicCar implements Car {
 
