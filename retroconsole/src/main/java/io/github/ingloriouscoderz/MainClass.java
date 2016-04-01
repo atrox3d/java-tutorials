@@ -13,14 +13,14 @@ public class MainClass {
 		   c.putString("Hello world");
 		   c.printScreen();
 		   c.waitForKeyPress();
-		   String a = c.readLine("Press enter: ");
-		   //c.initScreen();
-		   //c.printScreen();
-		   c.clearScreen();
-		   String ans = c.readLine("Enter data here: ");
-		   c.putStringAt(ans, 7, 20);
-		   c.printScreen();
-		   ans = c.readLine("A second input line: ");
+//		   String a = c.readLine("Press enter: ");
+//		   //c.initScreen();
+//		   //c.printScreen();
+//		   c.clearScreen();
+//		   String ans = c.readLine("Enter data here: ");
+//		   c.putStringAt(ans, 7, 20);
+//		   c.printScreen();
+//		   ans = c.readLine("A second input line: ");
 	   }
 
 }

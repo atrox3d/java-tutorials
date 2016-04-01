@@ -8,155 +8,150 @@ import java.lang.reflect.Method;
 public class RetroConsole {
 	private Console console;
 	private char[][] screen;
+	private Field screenField;
 	private Method printPrompt;
 	private Method readDouble;
 	private Method readInt;
 	private Method readLine;
 	private Method readLine_String;
+	private PrivateHelpers privateHelpers;
+	
+	private class PrivateHelpers {
+		
+		private PrivateHelpers() {
+			initScreenField();
+			initPrivateMethods();
+		}
+		
+		private void initScreenField() {
+			try {
+				screenField = console.getClass().getDeclaredField("screen");
+				screenField.setAccessible(true);
+				try {
+					screen = (char[][]) screenField.get(console);
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			} catch (NoSuchFieldException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SecurityException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
+
+		private void initPrivateMethods() {
+			try {
+				Class[] params = {String.class};
+				printPrompt = console.getClass().getDeclaredMethod("printPrompt", params);
+				printPrompt.setAccessible(true);
+
+				readDouble = console.getClass().getDeclaredMethod("readDouble", params);
+				readDouble.setAccessible(true);
+
+				readInt = console.getClass().getDeclaredMethod("readInt", params);
+				readInt.setAccessible(true);
+
+				readLine = console.getClass().getDeclaredMethod("readLine", null);
+				readLine.setAccessible(true);
+
+				readLine_String = console.getClass().getDeclaredMethod("readLine", params );
+				readLine_String.setAccessible(true);
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		private <R,P> R invokePrivateMethod(Method method, P... params) {
+			R value = null;
+			try {
+				value = (R)readLine_String.invoke(console, params);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return value;
+		}
+		
+		private void setScreenField(char[][] buffer) {
+			try {
+				screenField.set(console, buffer);
+				initScreenField();
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	
 	public RetroConsole() {
 		// find a way to change finals ROWS COLS variables
 		console = new Console();
-		
-		Field screenField;
-		try {
-			screenField = console.getClass().getDeclaredField("screen");
-			screenField.setAccessible(true);
-			try {
-				screen = (char[][]) screenField.get(console);
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}
-		} catch (NoSuchFieldException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (SecurityException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		
-		try {
-			Class[] params = {String.class};
-			printPrompt = console.getClass().getDeclaredMethod("printPrompt", params);
-			printPrompt.setAccessible(true);
-
-			readDouble = console.getClass().getDeclaredMethod("readDouble", params);
-			readDouble.setAccessible(true);
-
-			readInt = console.getClass().getDeclaredMethod("readInt", params);
-			readInt.setAccessible(true);
-
-			readLine = console.getClass().getDeclaredMethod("readLine", null);
-			readLine.setAccessible(true);
-
-			readLine_String = console.getClass().getDeclaredMethod("readLine", params );
-			readLine_String.setAccessible(true);
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		privateHelpers = new PrivateHelpers();
+		privateHelpers.setScreenField(new char[console.ROWS+1][console.COLS-1]);
 	}
 
 	public void printPrompt() {
-		try {
-			printPrompt.invoke(console);
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		privateHelpers.invokePrivateMethod(printPrompt, new String[] {});
 	}
 	
 	public double readDouble() {
 		double value = 0;
-		try {
-			value = (double) readDouble.invoke(console);
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		value = privateHelpers.invokePrivateMethod(readDouble, new String[] {});
 		return value;
 	}
 	
 	public int readInt() {
 		int value = 0;
-		try {
-			value = (int)readInt.invoke(console);
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		value = privateHelpers.invokePrivateMethod(readDouble, new String[] {});
 		return value;
 	}
 	
 	public String readLine() {
 		String value = "";
-		try {
-			value = (String)readLine.invoke(console);
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		value = privateHelpers.invokePrivateMethod(readLine, new String[] {});
 		return value;
 	}
 	
 	public String readLine(String s) {
 		String value = "";
-		try {
-			Object [] args = {s};
-			value = (String)readLine_String.invoke(console, args);
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		value = privateHelpers.invokePrivateMethod(readLine_String, new String[] {s});
 		return value;
 	}
 
 	public void initScreen() {
-		console.initScreen();
+		//console.initScreen();
+		for (int row=0; row<console.ROWS; row++) {
+			String lineno = String.format("%02d", row);
+			screen[row][0] = lineno.toCharArray()[0];
+			screen[row][1] = lineno.toCharArray()[1];
+		}
 	}
 
 	public void printScreen() {
 		//console.printScreen();
-		for (int row = 0; row < console.ROWS; row++) {
+		for (int row = 0; row < console.ROWS+1; row++) {
 			String line = "";
-			for (int col=0; col< console.COLS; col++) {
+			for (int col=0; col< console.COLS-1; col++) {
 				line += screen[row][col];
 			}
 			System.out.println(line);
@@ -165,8 +160,8 @@ public class RetroConsole {
 	}
 
 	public void clearScreen() {
-		console.initScreen();
-		console.printScreen();
+		initScreen();
+		printScreen();
 	}
 
 	public void putCharAt(char c, int row, int col) {
