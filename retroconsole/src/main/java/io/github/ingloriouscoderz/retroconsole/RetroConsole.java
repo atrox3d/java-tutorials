@@ -19,22 +19,16 @@ public class RetroConsole {
 	private class PrivateHelpers {
 		
 		private PrivateHelpers() {
-			screen = initScreenField(new char[console.ROWS+1][console.COLS-1]);
+			setScreenField(new char[console.ROWS+1][console.COLS-1]);
+			screen=getScreenField();
 			initPrivateMethods();
 		}
 		
-		private char[][] initScreenField(char [][] buffer) {
+		private void setScreenField(char [][] buffer) {
 			try {
 				screenField = console.getClass().getDeclaredField("screen");
 				screenField.setAccessible(true);
 				screenField.set(console, buffer);
-				try {
-					return (char[][]) screenField.get(console);
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				}
 			} catch (NoSuchFieldException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -47,6 +41,16 @@ public class RetroConsole {
 			} catch (IllegalAccessException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			}
+		}
+		
+		private char [][] getScreenField() {
+			try {
+				return (char[][]) screenField.get(console);
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
 			}
 			return null;
 		}
@@ -102,7 +106,7 @@ public class RetroConsole {
 		// find a way to change finals ROWS COLS variables
 		console = new Console();
 		privateHelpers = new PrivateHelpers();
-		privateHelpers.initScreenField(new char[console.ROWS+1][console.COLS-1]);
+		//privateHelpers.initScreenField(new char[console.ROWS+1][console.COLS-1]);
 	}
 
 	public void printPrompt() {
