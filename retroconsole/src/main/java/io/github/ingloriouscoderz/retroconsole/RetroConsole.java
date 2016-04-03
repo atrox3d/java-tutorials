@@ -24,19 +24,12 @@ public class RetroConsole {
 					field = obj.getClass().getDeclaredField(fieldName);
 					field.setAccessible(true);
 				} catch (NoSuchFieldException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (SecurityException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (IllegalArgumentException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} 
-//				catch (IllegalAccessException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
 				return field;
 			}
 			
@@ -44,10 +37,8 @@ public class RetroConsole {
 				try {
 					field.set(object, value);
 				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -58,10 +49,8 @@ public class RetroConsole {
 				try {
 					result = (R) field.get(object);
 				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -115,13 +104,10 @@ public class RetroConsole {
 				try {
 					value = (R)readLine_String.invoke(console, params);
 				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (InvocationTargetException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				return value;
@@ -146,10 +132,8 @@ public class RetroConsole {
 					readLine_String = console.getClass().getDeclaredMethod("readLine");
 					readLine_String.setAccessible(true);
 				} catch (NoSuchMethodException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (SecurityException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -254,7 +238,6 @@ public class RetroConsole {
 		try {
 			key = System.in.read();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
