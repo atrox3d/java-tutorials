@@ -36,6 +36,7 @@ public class RetroConsole {
 		initPrivateMethods();
 		setScreen(new char[console.ROWS+1][console.COLS-1]);
 		screen=getScreen();
+		initScreen();
 	}
 
 	public void printPrompt(String prompt) {
